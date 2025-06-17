@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birrificio Artigianale</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1510812431401-41eae5f3d3a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 80vh;
+        }
+        
+        .beer-card:hover .beer-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .beer-overlay {
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .navbar {
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobile-menu {
+            transition: all 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="navbar fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-amber-600">
+                    <a href="#" class="flex items-center">
+                        <i class="fas fa-beer mr-2"></i>
+                        <span>BIRRIFICIO</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white hover:text-amber-400 transition">Home</a>
+                    <a href="#birre" class="text-white hover:text-amber-400 transition">Le Nostre Birre</a>
+                    <a href="#storia" class="text-white hover:text-amber-400 transition">La Nostra Storia</a>
+                    <a href="#dove-siamo" class="text-white hover:text-amber-400 transition">Dove Siamo</a>
+                    <a href="#contatti" class="text-white hover:text-amber-400 transition">Contatti</a>
+                </div>
+                
+                <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="mobile-menu md:hidden bg-black bg-opacity-90 mt-2 rounded-lg">
+                <div class="px-4 py-3 flex flex-col space-y-3">
+                    <a href="#home" class="text-white hover:text-amber-400 transition">Home</a>
+                    <a href="#birre" class="text-white hover:text-amber-400 transition">Le Nostre Birre</a>
+                    <a href="#storia" class="text-white hover:text-amber-400 transition">La Nostra Storia</a>
+                    <a href="#dove-siamo" class="text-white hover:text-amber-400 transition">Dove Siamo</a>
+                    <a href="#contatti" class="text-white hover:text-amber-400 transition">Contatti</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero flex items-center justify-center text-center text-white pt-20">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Birrificio Artigianale</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Passione, tradizione e innovazione in ogni sorso</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#birre" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-medium transition">Scopri le nostre birre</a>
+                <a href="#dove-siamo" class="bg-transparent hover:bg-white hover:text-black border-2 border-white px-6 py-3 rounded-full font-medium transition">Visita il birrificio</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Birrificio" class="rounded-lg shadow-xl w-full" style="box-shadow: 0 10px 30px rgba(0,0,0,0.3)">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Artigianalità e Qualità</h2>
+                    <p class="text-lg mb-6">Dal 2010 produciamo birre artigianali con ingredienti selezionati e metodi tradizionali, combinando sapientemente innovazione e rispetto per la tradizione birraia.</p>
+                    <p class="text-lg mb-8">Ogni nostra birra è frutto di un'attenta ricerca e di una profonda passione per il mondo della birra artigianale.</p>
+                    <a href="#storia" class="inline-block bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-medium transition">La nostra storia</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Beers Section -->
+    <section id="birre" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Le Nostre Birre</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Scopri la nostra selezione di birre artigianali, ciascuna con il suo carattere unico</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Beer 1 -->
+                <div class="beer-card bg-white rounded-lg overflow-hidden shadow-lg relative">
+                    <img src="https://images.unsplash.com/photo-1612528443702-f6741f70a049?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="Ambrata" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Ambrata</h3>
+                        <p class="text-gray-600 mb-4">Birra ambrata dal gusto maltato con note caramellate</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-amber-600">5.8% vol.</span>
+                            <span class="text-gray-500">IBU: 28</span>
+                        </div>
+                    </div>
+                    <div class="beer-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-4">Ambrata</h3>
+                        <p class="text-center mb-4">Una birra dal colore ramato con un perfetto equilibrio tra dolcezza maltata e amaro dei luppoli.</p>
+                        <p class="text-center mb-6">Ideale per accompagnare carni rosse e formaggi stagionati.</p>
+                        <button class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-full">Scopri di più</button>
+                    </div>
+                </div>
+                
+                <!-- Beer 2 -->
+                <div class="beer-card bg-white rounded-lg overflow-hidden shadow-lg relative">
+                    <img src="https://images.unsplash.com/photo-1518176258769-f227c798150e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" alt="IPA" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">IPA</h3>
+                        <p class="text-gray-600 mb-4">India Pale Ale con intenso aroma di luppolo</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-amber-600">6.5% vol.</span>
+                            <span class="text-gray-500">IBU: 65</span>
+                        </div>
+                    </div>
+                    <div class="beer-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-4">IPA</h3>
+                        <p class="text-center mb-4">Una birra dall'intenso aroma di luppolo con note agrumate e floreali.</p>
+                        <p class="text-center mb-6">Perfetta per chi ama i sapori decisi e l'amaro persistente.</p>
+                        <button class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-full">Scopri di più</button>
+                    </div>
+                </div>
+                
+                <!-- Beer 3 -->
+                <div class="beer-card bg-white rounded-lg overflow-hidden shadow-lg relative">
+                    <img src="https://images.unsplash.com/photo-1516684732162-798a0062be99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1588&q=80" alt="Stout" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Stout</h3>
+                        <p class="text-gray-600 mb-4">Birra scura con note di caffè e cioccolato</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-amber-600">7.2% vol.</span>
+                            <span class="text-gray-500">IBU: 45</span>
+                        </div>
+                    </div>
+                    <div class="beer-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-4">Stout</h3>
+                        <p class="text-center mb-4">Una birra scura e corposa con aromi di caffè tostato, cioccolato fondente e liquirizia.</p>
+                        <p class="text-center mb-6">Ideale come digestivo o abbinata a dessert al cioccolato.</p>
+                        <button class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-full">Scopri di più</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-full font-medium transition">Vedi tutta la selezione</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- History Section -->
+    <section id="storia" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row-reverse items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pl-10">
+                    <img src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" alt="Storia del birrificio" class="rounded-lg shadow-xl w-full" style="box-shadow: 0 10px 30px rgba(0,0,0,0.3)">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">La Nostra Storia</h2>
+                    <p class="text-lg mb-6">Tutto ebbe inizio nel 2010 quando Marco e Luca, due amici appassionati di birra, decisero di trasformare la loro passione in un lavoro.</p>
+                    <p class="text-lg mb-6">Partendo da un piccolo garage attrezzato, iniziarono a sperimentare ricette e tecniche di produzione, perfezionando giorno dopo giorno il loro stile.</p>
+                    <p class="text-lg mb-8">Oggi il nostro birrificio è un punto di riferimento per gli amanti della birra artigianale, con una produzione che unisce tradizione e innovazione.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-medium transition">Il nostro team</a>
+                        <a href="#" class="bg-transparent hover:bg-gray-100 border-2 border-black px-6 py-3 rounded-full font-medium transition">Il nostro metodo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Visit Section -->
+    <section id="dove-siamo" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Visita il Birrificio</h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Vieni a trovarci per scoprire come nascono le nostre birre e per degustarle direttamente alla fonte</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-800 rounded-lg p-6 mb-8">
+                        <h3 class="text-2xl font-bold mb-4">Orari di Apertura</h3>
+                        <ul class="space-y-3">
+                            <li class="flex justify-between border-b border-gray-700 pb-2">
+                                <span>Lunedì - Giovedì</span>
+                                <span>16:00 - 23:00</span>
+                            </li>
+                            <li class="flex justify-between border-b border-gray-700 pb-2">
+                                <span>Venerdì - Sabato</span>
+                                <span>12:00 - 24:00</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Domenica</span>
+                                <span>12:00 - 22:00</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gray-800 rounded-lg p-6">
+                        <h3 class="text-2xl font-bold mb-4">Tour del Birrificio</h3>
+                        <p class="mb-4">Ogni sabato alle 17:00 offriamo un tour guidato del nostro birrificio con degustazione finale di 4 birre.</p>
+                        <p class="mb-6">Prenotazione obbligatoria.</p>
+                        <button class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-medium transition">Prenota un tour</button>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="h-full bg-gray-800 rounded-lg overflow-hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215076218453!2d-73.987844924525!3d40.74844097138962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1623862340003!5m2!1sen!2sus" width="100%" height="100%" style="min-height: 400px;" allowfullscreen="" loading="lazy" class="border-0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-amber-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Rimani Aggiornato</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Iscriviti alla nostra newsletter per ricevere novità, eventi speciali e promozioni</p>
+            
+            <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+                <input type="email" placeholder="La tua email" class="flex-grow px-4 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-800">
+                <button type="submit" class="bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-full font-medium transition whitespace-nowrap">Iscriviti</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contatti" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contattaci</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Hai domande o vuoi maggiori informazioni? Scrivici!</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block mb-2 font-medium">Nome</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 font-medium">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block mb-2 font-medium">Oggetto</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2 font-medium">Messaggio</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-medium transition">Invia messaggio</button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-100 rounded-lg p-8 h-full">
+                        <h3 class="text-2xl font-bold mb-6">Info & Contatti</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="text-amber-600 mt-1 mr-4">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Indirizzo</h4>
+                                    <p>Via della Birra, 123<br>00100 Roma, Italia</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-amber-600 mt-1 mr-4">
+                                    <i class="fas fa-phone-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Telefono</h4>
+                                    <p>+39 06 1234567</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-amber-600 mt-1 mr-4">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Email</h4>
+                                    <p>info@birrificioartigianale.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-amber-600 mt-1 mr-4">
+                                    <i class="fas fa-clock text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Orari Ufficio</h4>
+                                    <p>Lunedì - Venerdì<br>9:00 - 13:00 / 14:00 - 18:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4">Seguici sui social</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-gray-200 hover:bg-amber-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-gray-200 hover:bg-amber-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-gray-200 hover:bg-amber-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-gray-200 hover:bg-amber-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Birrificio Artigianale</h3>
+                    <p class="text-gray-400">Passione, tradizione e innovazione in ogni sorso dal 2010.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Link veloci</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#birre" class="text-gray-400 hover:text-white transition">Le Nostre Birre</a></li>
+                        <li><a href="#storia" class="text-gray-400 hover:text-white transition">La Nostra Storia</a></li>
+                        <li><a href="#dove-siamo" class="text-gray-400 hover:text-white transition">Dove Siamo</a></li>
+                        <li><a href="#contatti" class="text-gray-400 hover:text-white transition">Contatti</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Termini e condizioni</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Iscriviti per ricevere novità e promozioni.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="La tua email" class="px-4 py-2 rounded-l-lg text-gray-800 w-full focus:outline-none">
+                        <button type="submit" class="bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Birrificio Artigianale. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.remove('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
